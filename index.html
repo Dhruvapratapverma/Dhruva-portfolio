@@ -1,0 +1,2608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+  
+  <title>Portfolio-Dhruva Pratap Verma</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      font-family:"Italiana" ;
+     /* background-image:url("index-html-test-bg.png") ;
+      background-repeat: no-repeat;
+      background-size: cover;*/
+    }
+
+    #container {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Flower takes 100% width at home, 30% when overlay is active */
+    #flower-container {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      transition: width 0.6s ease;
+    }
+
+    #flower {
+      width: 1000px;
+      height: 1000px;
+      max-width: none;
+      max-height: none;
+      transform-origin: center center;
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+
+.overlay {
+      display: none;
+      flex: 1;
+      position: relative;
+      height: 90%;
+      top:5%;
+      background: rgba(0, 0, 0, 0);
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      padding: 0px;
+      box-sizing: border-box;
+      flex-direction: column;
+      z-index: 10;
+    }
+    
+    .overlay.active {
+      display: flex;
+    }
+
+
+
+
+
+
+
+    .nav-buttons {
+      margin-top: 20px;
+    }
+
+    .nav-buttons button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 1em;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+/* Split overlay layout */
+.overlay .split-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* Vertical image slider */
+.image-slider {
+  width: 25%;
+  background: #e0e0e000;
+  overflow-y: auto;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Content area */
+#overlay3 .content-area {
+  width: 75%;
+  padding: 10px;
+  border-radius: 20px;
+  margin: 4px;
+  box-sizing: border-box;
+  background: #ffffff;
+  overflow-y: auto;
+}
+
+/* Image styling */
+#overlay3 .image-slider .img-area {
+  width: 65%;
+  height: auto;
+  background-color: #000000;
+  border-radius: 10px;
+  cursor: pointer;
+}
+ #overlay3 .image-slider img:hover {
+  transform: scale(1.09);
+  opacity: 60%;
+  
+}
+
+
+
+
+
+/* Content area */
+ .content-area {
+  width: 75%;
+
+  border-radius: 20px;
+ 
+  box-sizing: border-box;
+  background: #00000000;
+  overflow:auto;
+}
+
+/* Image styling */
+ .image-slider img {
+  width: 70%;
+  height: auto;
+  background-color: #00000000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+}
+ .image-slider img:hover {
+  transform: scale(1.07);
+  opacity: 60%;
+  
+}
+
+
+
+
+.content-block {
+  display: none;
+}
+
+.content-block.show {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+.Dhruva{
+     position: absolute; right:1%; top:-1%; font-size: .9em;
+     transition: .3s ease-in-out;
+     letter-spacing: .07em;
+     font-size: 1.4em;
+     
+}
+.Dhruva:hover{
+ cursor: none;
+     color: #ffffff;
+     text-decoration: none;
+}
+.Dhruva .details {
+  position: absolute;
+  background-color: #ffffff2d;
+  padding: 3%;
+  margin:5% 0 0 0 ;
+  top: 100%;
+  right: 0;
+  opacity: 0;
+  transform: scale(0.9);
+  transform-origin: top left;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+  padding: 4px 10px;
+  border-radius: 5px;
+  color: #333;
+  font-size: 1rem;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.Dhruva:hover .details {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.inshort{
+position: absolute; border-radius: 50%; top: 40%; right: 1%; z-index: 100; padding: 45px 30px; font-size: 1em;
+transition: 0.2s ease-in-out;border: none; background-color:#0c0c0c; color:white;}
+.inshort:hover{
+  background-color: #f6f6f6;
+  color: rgb(15, 15, 15);
+  cursor: pointer;
+}
+.inshort .inshort-hover {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  opacity: 0;
+  transform: scale(0.9);
+  transform-origin: top left;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+  padding: 4px 10px;
+  border-radius: 5px;
+  color: #333;
+  font-size: 1rem;
+  z-index: 1;
+  pointer-events: none;
+}
+.inshort:hover .inshort-hover {
+  opacity: 1;
+  transform: scale(1);
+}
+.overlay.active ~ #shortinBtn {
+  display: none;
+}
+
+
+
+
+
+::-webkit-scrollbar{
+ width: 100%;
+ height: auto;
+
+}
+
+
+
+
+
+
+ .hi{
+  font-size: 20px;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+.bg{
+  position: fixed;
+  top:0;
+  left:0;
+  min-width: 100vh;
+  max-height: 100%;
+  z-index: -10;
+  overflow: hidden;
+
+}
+.bg video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .on-tab-settings-interactive {
+
+     width: auto;
+     height: 90vh;
+     top:0;
+    
+    
+    }
+
+
+#on-tab-settings{
+  top:0;
+  left: 0px;
+    height: 90vh;
+    overflow: hidden;
+    width: auto;
+    border-radius: 20px;
+}
+
+
+
+.intiative-toopen {
+    
+     height: 100vh;
+     top:0;
+     
+    
+    
+    }
+#intiative-toopen{
+   top:0;
+  left: 0px;
+    height: 85%;
+    overflow: hidden;
+    width: auto;
+    border-radius: 20px;
+  
+}
+
+
+
+
+  .rightscrollbar-volume-brightness-interactive {
+    
+     height: 100vh;
+    top:0;
+    
+    
+    }
+#rightscrollbar-volume-brightness{
+   overflow: hidden;
+   top:0;
+    left: 0px;
+    height: auto;
+    width: 100%;
+    border-radius: 20px;
+  
+}
+
+
+
+
+.battery-to-time {
+   top:0;
+     height: 100%;
+     
+    
+    
+    }
+#battery-to-time{
+   top:0;
+  left: 0;
+    height: 90%;
+    overflow: hidden;
+    width: auto;
+    border-radius: 10px;
+  
+}
+
+
+.gradient-interactive-section {
+      margin: 0;
+      
+      height: 600vh;
+  
+      color: white;
+    }
+  
+    main {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    main video {
+      width: 100%;
+      
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.art {
+column-count: 4;
+column-gap: 15px;
+padding: 15px;
+}
+
+
+.art-item {
+break-inside: avoid;
+margin-bottom: 15px;
+border-radius: 10px;
+overflow: hidden;
+background: #fff;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.art-item img,
+.art-item video {
+width: 100%;
+display: block;
+border-radius: 10px;
+}
+
+
+@media (max-width: 1200px) {
+.art {
+column-count: 3;
+}
+}
+
+
+@media (max-width: 768px) {
+.art {
+column-count: 2;
+}
+}
+
+
+@media (max-width: 480px) {
+.art {
+column-count: 1;
+}
+}
+
+
+
+.codeblock{position:relative; margin:1.25rem 0; border:1px solid #333; border-radius:10px; overflow:hidden;}
+    .codebar{display:flex; justify-content:flex-end; padding:.5rem; background:#1e1e1e;}
+    .copybtn{background:#333; color:#fff; border:none; padding:.35rem .6rem; border-radius:6px; cursor:pointer; font-size:.8rem;}
+    .copybtn:active{transform:translateY(1px)}
+
+
+
+  pre{margin:0; background:#111; color:#eee; overflow:auto}
+    code{display:block; font-family: monospace; line-height:1.6; font-size:.92rem; padding:1rem; white-space:pre}
+  </style>
+</head>
+<body>
+<div class="bg">
+  <video id="bgvideo" muted playsinline>
+    <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486560/bg2white_sxcmpc.mp4" type="video/mp4">
+   
+  </video>
+  </div>
+
+
+
+
+
+<h1 class="Dhruva">Dhruva Pratap Verma <span class="details">Designer</span></h1>
+
+
+   <button id="shortinBtn" class="inshort" style="font-family: 'Italiana', sans-serif;">
+  Inshort
+  <span class="inshort-hover">recommedned for recruiter</span>
+</button>
+
+  <div id="container">
+    <div id="flower-container">
+      <!-- SVG Flower -->
+      <object id="flower" data="aaaa.svg" type="image/svg+xml"></object>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <div id="overlay3" class="overlay">
+     <div class="split-container">
+    <!-- Vertical Image Slider -->
+    <div class="image-slider">
+      <div class="img-area">
+        <p style="font-size: .4em; color: #ffffff; padding-left: 10px;">Working</p>
+      <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486787/youtube-simple_00044_xfi8dx.png" style="width: 98%; height: auto; border-radius: 10px ; overflow: hidden; margin:0 0 20px 20px;  opacity: 100%;
+  transition: 0.2s ease-in;" data-content="content1" onclick="showContent('overlay3', this)" />
+      </div>
+
+      <div class="img-area">
+        <p style="font-size: .4em; color: #ffffff; padding-left: 10px;">On-tab-settings</p>
+        <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486833/BATTERY_TIME_00020_dkz9dv.png"  style="width: 98%; height: auto; border-radius: 10px ; overflow: hidden; margin:0 0 20px 20px;  opacity: 100%;
+  transition: 0.2s ease-in;"  data-content="content2" onclick="showContent('overlay3', this)" />
+     </div>
+
+        <div class="img-area">
+        <p style="font-size: .4em; color: #ffffff; padding-left: 10px;">Intuitive opens</p>
+        <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486823/Comp_1_00006_oicdgs.jpg"  style="width: 98%; height: auto; border-radius: 10px ; overflow: hidden; margin:0 0 20px 20px;  opacity: 100%;
+  transition: 0.2s ease-in;" data-content="content3" onclick="showContent('overlay3', this)" />
+      </div>
+
+      <div class="img-area">
+        <p style="font-size: .4em; color: #ffffff; padding-left: 10px;">Easy to hear</p>
+       <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486816/Comp_2_00710_xghoc6.png" data-content="content4"  style="width: 98%; height: auto; border-radius: 10px ; overflow: hidden; margin:0 0 20px 20px;  opacity: 100%;
+  transition: 0.2s ease-in;" onclick="showContent('overlay3', this)" />
+       </div>
+
+       <div class="img-area">
+        <p style="font-size: .4em; color: #ffffff; padding-left: 10px;">Accessible</p>
+       <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486835/accessible_cegsx2.jpg"  style="width: 98%; height: auto; border-radius: 10px ; overflow: hidden; margin:0 0 20px 20px;  opacity: 100%;
+  transition: 0.2s ease-in;" data-content="content5" onclick="showContent('overlay3', this)" />
+         </div>
+
+         <div class="img-area">
+        <p style="font-size: .4em; color: #ffffff; padding-left: 10px;">Pre-Result</p>
+       <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486821/Comp_1_00391_rtuedf.png"  style="width: 98%; height: auto; border-radius: 10px ; overflow: hidden; margin:0 0 20px 20px;  opacity: 100%;
+  transition: 0.2s ease-in;" data-content="content6" onclick="showContent('overlay3', this)" />
+          </div>
+       
+          <div class="img-area">
+        <p style="font-size: .4em; color: #ffffff; padding-left: 10px;">Battery to Time</p>
+       <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486834/BATTERY_TIME_00000_00000_qrtzjx.jpg"  style="width: 98%; height: auto; border-radius: 10px ; overflow: hidden; margin:0 0 20px 20px;  opacity: 100%;
+  transition: 0.2s ease-in;"  data-content="content7" onclick="showContent('overlay3', this)" />
+    </div>
+
+
+     <div class="img-area">
+        <p style="font-size: .4em; color: #ffffff; padding-left: 10px;">Contour Expand</p>
+      <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486805/contour_sjwejh.png" style="width: 98%; height: auto; border-radius: 10px ; overflow: hidden; margin:0 0 20px 20px;  opacity: 100%;
+  transition: 0.2s ease-in;" data-content="content8" onclick="showContent('overlay3', this)" />
+      </div>
+      </div>
+
+
+
+
+
+
+
+
+    <!-- Dynamic Content Area -->
+    <div class="content-area" id="overlay3-content">
+            <div id="overlay3-content1" class="content-block show">
+              <div style="display: flex; height: 100%; width: 100%;">
+                 <div class="active-content-interactive-area" style="width: 30%; height: auto; overflow-y: hidden; box-sizing: border-box;">
+                   <video id="youtube-simple" style="width: 100%; height: auto; overflow: hidden; border-radius: 10px; " controls loop>
+                        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486810/Comp_8_fo7207.mp4" type="video/mp4">
+                    </video>
+                 </div>
+
+                  <div class="active-content-interactive-area's-overview" style="width: 70%; height: auto; overflow-y: auto; box-sizing: border-box;">
+                      <p style="color: #000000; margin:.5em 0 0 1em;   letter-spacing: .04em;">OVERVIEW</p>
+                      <p style="color: rgba(0, 0, 0, 0.808); margin:.5em 0 0 2.3em; text-shadow: none;  font-weight:100; letter-spacing: .07em; font-size: .5em; ">This is an approach of how combining 
+                      knowledge from psychology, perception 
+                      science, color theory ( lights interaction )
+                      and display technology can guide accurate,
+                      human-centered design, human visuals. I use these 
+                      principles to address human limitations and 
+                      generate ideas that simplify interaction, reduce 
+                      congnitve load, and align technology with 
+                      natural human behavior.</p>
+                    
+                    
+                 
+                    </div>
+                  </div>
+
+
+
+                    <div style="display: flex; height: 100%; width: 100%;">
+                     <div  style="width: 100%; height: auto; overflow-y: auto; box-sizing: border-box;">
+                     <p style="color: #000000; margin:2em 0 0 .3em;   letter-spacing: .04em;">WHAT IS IT?</p>
+                      <p style="color: #000000; margin:.5em 0 0 .7em;  font-weight:lighter; letter-spacing: .04em; font-size: .5em; ">App / software / website / os / anything else and which kind.</p>
+                  
+                      <p style="color: #000000; margin:1em 0 0 .3em;   letter-spacing: .04em;">APP (Youtube)</p>
+                      <p style="color: #000000; margin:.5em 0 0 .7em;  font-weight:lighter; letter-spacing: .04em; font-size: .5em; ">An social media app mainly content driven videos and intercation with people.</p>
+                      
+                      
+                      <div style="width:100%; height: auto; display: flex; margin: .8em 0 0 0;">
+                        <div style="width: 67%; height: auto; ">
+                     
+                          <video style="width: 47%; height: auto; overflow: hidden; border-radius: 10px; " controls loop>
+                        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486820/Comp_5_id54io.mp4" type="video/mp4">
+                      </video>
+                         <video style="width: 47%; height: auto; overflow: hidden; border-radius: 10px; " controls loop>
+                        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486813/Comp_9_ep1y8b.mp4" type="video/mp4">
+                      </video>
+                       </div>
+                      <div style="width: 33%; height: auto;">
+                              <p style="color: #000000; margin:5em 0 0 .3em;   letter-spacing: .04em;">Videos</p>
+                      <p style="color: #000000; margin:.5em 0 0 .7em;  font-weight:lighter; letter-spacing: .04em; font-size: .5em; ">An social media app mainly content driven videos and intercation with people.</p>
+                         
+                   
+                      </div>
+                      </div>
+
+
+
+                       <div style="width:100%; height: auto; display: flex; margin: .8em 0 0 0;">
+                        <div style="width: 33; height: auto; ">
+                      <video style="width: 100%; height: 80vh; overflow: hidden; border-radius: 10px; " controls loop>
+                        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486813/Comp_6_1_f77dlb.mp4" type="video/mp4">
+                      </video>
+                        
+                       </div>
+                      <div style="width: 67%; height: auto;">
+                              <p style="color: #000000; margin:5em 0 0 1em;   letter-spacing: .04em;">Socializing</p>
+                      <p style="color: #000000; margin:.5em 0 0 2.3em;  font-weight:lighter; letter-spacing: .04em; font-size: .5em; ">An social media app mainly content driven videos and intercation with people.</p>
+                         
+                   
+                      </div>
+                      </div>
+
+                        
+ 
+
+
+                      <div style="width:100%; height: auto; display: flex; margin: .8em 0 0 0;">
+                        <div style="width: 33; height: auto; ">
+                     <video style="width: auto; height: 80vh; overflow: hidden; border-radius: 10px; " controls loop>
+                        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486810/Comp_8_fo7207.mp4" type="video/mp4">
+                      </video>
+                        
+                       </div>
+                      <div style="width: 67%; height: auto;">
+                          <p style="color: #000000; margin:5em 0 0 1em;   letter-spacing: .04em;">SIMPLECITY</p>
+                      <p style="color: #000000; margin:.5em 0 0 2.3em;  font-weight:lighter; letter-spacing: .04em; font-size: .5em; ">An social media app mainly content driven videos and intercation with people.</p>
+                         
+                   
+                      </div>
+                      </div>
+
+                    
+                         
+                 
+
+                      <p style="color: #000000; margin: 5em 0 0 0;">Execution</p>
+
+                    <div class="color-diff-img" style="width: 100%; height: auto; display: flex;">
+
+                      <img style="width: 100%; height: auto;" src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486790/Untitled-1_q9lyfv.png"/>
+
+                    </div>
+
+                    <p style="font-size: .8em; margin: 5em 0 0 0;">Display pipeline & pixels layout</p>
+                     <div  style="width: 100%; height: auto; display: flex; margin: .6em 0 0 0;">
+
+                      <img style="width: 100vh; height: auto;" src="https://res.cloudinary.com/disf7euj5/image/upload/v1756544847/Android_display_pipeline_dwghta.png"/>
+
+                    </div>
+                    <div style="width: 100%; height: 50vh; display: flex; margin: .6em 0 0 0 ;">
+                      <div class="color-diff-img" style="width: 50%; height: auto; margin: .5em;">
+
+                      <img style="width: 100%; height: auto;" src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486798/pixel-search_zfmgpu.png"/>
+
+                    </div>
+
+
+                    <div class="-diff-img" style="width: 50%; height: auto; margin: .5em;">
+
+                      <img style="width: 100%; height: auto;" src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486801/interpolation_gp64s4.png"/>
+
+                    </div>
+                    </div>
+                  
+
+                    <p style="font-size: .8em; margin: 5em 0 0 0;">Eyes</p>
+                     <div class="diffimg" style="width: 100%; height: auto; display: flex; margin:.7em 0 0 0;">
+                     
+                      <img style="width:100vh ; height: auto;" src="https://res.cloudinary.com/disf7euj5/image/upload/v1756544918/eye-pipeline_k1hfla.png"/>
+
+                    </div>
+
+
+                    <p style="font-size: .8em; margin: 3em 0 0 0;">Comibing all </p>
+
+                    
+                  <div style="width: 100%; height: auto; display: flex;">
+                     <video style="width: auto; height: 80vh; overflow: hidden; border-radius: 10px; " controls loop>
+                        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486820/Comp_5-motion_fmvpbu.mp4" type="video/mp4">
+                      </video>
+                      <img style="width:auto ; height: 80vh; margin:0 0 0 2em;" src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486792/under_pehw7k.png"/>
+
+                    </div>
+                    <p style="font-size: .8em; margin: 2em 0 0 0;">Calulation</p>
+
+                    <p style="font-size: .6em;">Taking</p>
+
+                    <p style="font-size: .4em;">Display: 1179 × 2556 (iPhone 16 base), physical size W = 0.067 m, H = 0.145 m.</p>
+
+                     <p style="font-size: .4em;">Viewing distance: d = 0.25 m.</p>
+
+                      <p style="font-size: .4em;">Eye optics: f = 17 mm, pupil D = 3 mm.</p>
+
+                     <p style="font-size: .4em;">Gaze (px) = (589.5, 639).</p>
+
+                      <p style="font-size: .4em;">  Pixel (px) = (589.5, 1917).</p>
+
+                      <p style="font-size: .6em;">Pixel / gaze → meters from screen center</p>
+                      <p style="font-size: .4em;">Pixel: 𝑋= 0.000000 m, Y=+0.0362669 m.</p>
+                      <p style="font-size: .4em;">Gaze: X=0.0000000 m,Y=-0.0362669 m</p>
+                      <p style="font-size: .6em;">World angles (degrees)</p>
+                      <p style="font-size: .4em;">Pixel: 𝜃𝑥,pix=0.000∘, 𝜃𝑦,pix=+8.262∘.</p>
+                      <p style="font-size: .4em;">Pixel: 𝜃𝑥,gaze=0.000∘, 𝜃𝑦,gaze=-8.262∘.</p>
+                      <p style="font-size: .6em;">Relative angles</p>
+                      <p style="font-size: .4em;">𝛼𝑥=0.000∘, 𝛼𝑦=16.524∘.</p>
+                      <p style="font-size: .6em;">Retinal mapping (thin-lens)</p>
+                      <p style="font-size: .4em;">xretina​=ftan(αx​)=0 μm.</p>
+                      <p style="font-size: .4em;">yretina​=ftan(αy)=5035.88 μm.</p>
+                      <p style="font-size: .4em;">Eccentricity𝜌≈5.036 mm.ρ≈5.036 mm.</p>
+                      <p style="font-size: .6em;">Local cone spacing (empirical)</p>
+                      <p style="font-size: .4em;">s(μm)≈2.24+0.226⋅ρmm​=2.24+0.226×5.036≈3.378 μm.</p>
+                      <p style="font-size: .4em;">Hex cone area Acone	​≈0.866×s2≈9.87 μm2.</p>
+                      <p style="font-size: .6em;">PSF example (Airy at 540 nm) — for spot-size</p>
+                      <p style="font-size: .4em;">Airy → retinal radius 𝑟≈3.733 𝜇m  (example).</p>
+                      <p style="font-size: .4em;">Gaussian σ ≈ r/1.5≈2.489 μm.</p>
+                      <p style="font-size: .4em;">Spot area 𝐴spot≈𝜋𝑟2≈43.85 𝜇m2.</p>
+                      <p style="font-size: .6em;">Estimated number of cones under the spot (area ratio)</p>
+                      <p style="font-size: .4em;">N≈​Aspot/Acone​​≈43.85/9.87​≈4.43. 4–5 cones.</p>
+                      <p style="font-size: .6em;">Expected counts of L / M / S (fractional / expectation)</p>
+                      <p style="font-size: .4em;">To get expected numbers of each cone type under the spot, multiply N by the local type proportion</p>
+                      <p style="font-size: .4em;">pL​=0.52,pM​=0.37,pS​=0.11</p>
+                      <p style="font-size: .4em;">E[NL]=N*pL = 4.43*0.52 =2.30</p>
+                      <p style="font-size: .4em;">E[NM]=N*pM = 4.43*0.37 =1.64</p>
+                      <p style="font-size: .4em;">E[NS]=N*pS = 4.43*0.11 =0.49</p>
+                      
+
+
+                    
+
+
+
+                    <p  style="font-size: .8em; margin: 2em 0 0 0;">Prototype</p>
+                    <p>1</p>
+                    <p>ideas, user, human</p>
+                    <p>2</p>
+                    <img style="display: flex; width: auto; height: 70vh;" src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486785/figma_whol9n.png"/>
+
+                         <p>3</p>
+                    <img style="display: flex; width: auto; height: 70vh;" src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486784/Screenshot_16_vai9on.png"/>
+
+
+                    <span><p>4</p><p> convert to <span style="color: #929292d7;">.json</span></p></span>
+
+
+
+                           <p>5</p>
+                    <section class="codeblock" data-filename="battery-to-time.html" data-lang="html">
+    <div class="codebar">
+      <button class="copybtn" type="button">Copy</button>
+    </div>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Lottie Interactive Shape (Capacity)&lt;/title&gt;
+  &lt;style&gt;
+    body, html {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #battery-to-time {
+      width: 100%;
+      height: 100%;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="battery-to-time"&gt;
+  &lt;div id="battery-to-time"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Lottie Player --&gt;
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  const animation_battery_to_time = lottie.loadAnimation({
+    container: document.getElementById("battery-to-time"),
+    renderer: "svg",
+    loop: false,
+    autoplay: false,
+    path: "battery-to-time.json" 
+  });
+
+  animation_battery_to_time.addEventListener("DOMLoaded", () =&gt; {
+    const svg = document.querySelector("#battery-to-time svg");
+    const groups = svg.querySelectorAll("g");
+    let toggled = true;
+    groups.forEach((g, i) =&gt; {
+      if (i === 17)  { 
+        g.setAttribute("data-index", i);
+        g.style.cursor = "pointer";
+        g.addEventListener("click", () =&gt; {
+          if (!toggled){
+            animation_battery_to_time.playSegments([0, 14], true);
+          } else {
+            animation_battery_to_time.playSegments([14, 0], true);
+          }
+          toggled = !toggled;
+        });
+      }
+    });
+  });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+  </section>
+
+
+               <p>final</p>
+                  <div class="active-content-interactive-area" style="width: 40%; height: auto;">
+                    <div class="battery-to-time"><div id="battery-to-time"></div></div>
+                  </div>
+
+
+                     
+                     
+                 
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+             </div>
+
+
+      <div id="overlay3-content2" class="content-block">
+
+        <div style="display: flex; height: 100%; width: 100%;">
+
+                 <div class="active-content-interactive-area" style="width: 30%; height: auto; overflow-y: hidden; box-sizing: border-box;">
+                    <div class="on-tab-settings-interactive"><div id="on-tab-settings"></div></div>
+                  </div>
+
+                   <div class="active-content-interactive-area's-overview" style="width: 60%; height: auto; overflow-y: auto; box-sizing: border-box;">
+                      <p style="font-size: 1em; color: #000; margin-left: 3%;">On Tab Settings</p>
+                      <p style="font-size: .5em; color: #000; margin-left: 3%;">simplying the prcess for user to search for particular feature settings,in ths just tab and settings open for os related one only, but can be used anywhere in the tech products</p>
+                   </div>
+
+        </div>
+
+      </div>
+
+
+      <div id="overlay3-content3" class="content-block">
+          <div style="display: flex; height: 100%; width: 100%;">
+
+                 <div class="active-content-interactive-area" style="width: 40%; height: auto; overflow-y: hidden; box-sizing: border-box;">
+                            <div class="intiative-toopen"> <div id="intiative-toopen"></div> </div>
+                  </div>
+
+                   <div class="active-content-interactive-area's-overview" style="width: 60%; height: auto; overflow-y: auto; box-sizing: border-box;">
+                       <p style="font-size: 1em; color: #000; margin-left: 3%;">Intuitive open</p>
+                      <p style="font-size: .5em; color: #000; margin-left: 3%;">it is just intuitive way to open things by click on them.</p>
+                   </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div id="overlay3-content4" class="content-block">
+
+
+         <div style="display: flex; height: 100%; width: 100%;">
+
+                 <div class="active-content-interactive-area" style="width: 40%; height: auto; overflow-y: hidden; box-sizing: border-box;">
+                            
+                     <video id="different-ears" style="width: 100%; height: auto; overflow: hidden; border-radius: 20px;" controls loop>
+                      <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486827/Comp_2_stn4fc.mp4" type="video/mp4">
+                     </video>
+                  </div>
+
+                   <div class="active-content-interactive-area's-overview" style="width: 60%; height: auto; overflow-y: auto; box-sizing: border-box;">
+                       <p style="font-size: 1em; color: #000; margin-left: 3%;">Double ear hearing</p>
+                      <p style="font-size: .5em; color: #000; margin-left: 3%;">An effective way to hear two things at onces.</p>
+                   </div>
+        </div>
+
+      </div>
+
+
+
+
+      <div id="overlay3-content5" class="content-block">
+
+        <div style="display: flex; height: 100%; width: 100%;">
+
+                 <div class="active-content-interactive-area" style="width: 40%; height: auto; overflow-y: hidden; box-sizing: border-box;">
+                     <video id="volume-brightness" style="width: 100%; height: auto; overflow: hidden; border-radius: 20px;" controls loop>
+                      <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486785/volume-brighttnes_ihgr0t.mp4" type="video/mp4">
+                     </video>
+                  </div>
+
+                   <div class="active-content-interactive-area's-overview" style="width: 60%; height: auto; overflow-y: auto; box-sizing: border-box;">
+                      <p style="font-size: 1em; color: #000; margin-left: 3%;">Accessible</p>
+                      <p style="font-size: .5em; color: #000; margin-left: 3%;"></p>
+                   </div>
+
+        </div>
+       
+      </div>
+
+
+
+      <div id="overlay3-content6" class="content-block">
+
+        <div style="display: flex; height: 100%; width: 100%;">
+
+                 <div class="active-content-interactive-area" style="width: 40%; height: auto; overflow-y: hidden; box-sizing: border-box;">
+                  <video id="on-type-results" style="width: auto; height: 100vh; overflow: hidden; border-radius: 20px;" controls loop>
+                       <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486827/Comp_2_1_ukmxly.mp4" type="video/mp4">
+                    </video>
+                  </div>
+
+                   <div class="active-content-interactive-area's-overview" style="width: 60%; height: auto; overflow-y: auto; box-sizing: border-box;">
+                       <p style="font-size: 1em; color: #000; margin-left: 3%;">Results</p>
+                      <p style="font-size: .5em; color: #000; margin-left: 3%;">simplying the prcess for user to search for particular feature settings,in ths just tab and settings open for os related one only, but can be used anywhere in the tech products</p>
+                   </div>
+
+        </div>
+       
+      </div>
+
+
+      <div id="overlay3-content7" class="content-block">
+          <div style="display: flex; height: 100%; width: 100%;">
+
+                 <div class="active-content-interactive-area" style="width: 40%; height: auto; overflow-y: hidden; box-sizing: border-box;">
+                  <div class="battery-to-time"><div id="battery-to-time"></div></div>
+                  </div>
+
+                   <div class="active-content-interactive-area's-overview" style="width: 60%; height: auto; overflow-y: auto; box-sizing: border-box;">
+                      <p style="font-size: 1em; color: #000; margin-left: 3%;">Battery to Time </p>
+                      <p style="font-size: .5em; color: #000; margin-left: 3%;">This feature converts the battery percentage into an estimate of how much time the battery will last,so users don't have to wonder or calculate how long it wil take for the battery to drain.</p>
+                   </div>
+
+        </div>
+      </div>
+
+
+
+      
+      <div id="overlay3-content8" class="content-block">
+
+        <div style="display: flex; height: 100%; width: 100%;">
+
+                 <div class="active-content-interactive-area" style="width: 55%; height: auto; overflow-y: hidden; box-sizing: border-box;">
+                  <video id="contour_expand" style="width: 100%; height: auto; overflow: hidden; border-radius: 20px;" controls loop>
+                       <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486829/button-area-better-phrasing_qxy9xb.mp4" type="video/mp4">
+                    </video>
+                  </div>
+
+                   <div class="active-content-interactive-area's-overview" style="width: 60%; height: auto; overflow-y: auto; box-sizing: border-box;">
+                       <p style="color:#000;">Contour</p>
+                      <p style="font-size: .5em;">Since most people use their thumbs and fingers to interact with their phones, the relatively large surface area of a thumb compared to small buttons can make it difficult to accurately. This often forces users to be overly precise when pressing buttons. To solve this, the feature increases the effective buton size by adding an invisible contour around each button, without changing the overall Ui layout. </p>
+                   </div>
+
+        </div>
+       
+      </div>
+
+
+    </div>
+  </div>
+  
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="overlay4" class="overlay">
+     <div class="split-container">
+    <div class="image-slider">
+      <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486826/Comp_1_00000_ygag2l.png" data-content="content1" onclick="showContent('overlay4', this)" />
+      <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486825/Comp_1_00000_lobzpe.jpg" data-content="content2" onclick="showContent('overlay4', this)" />
+      <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486828/child-img_jwhfux.png" data-content="content3" onclick="showContent('overlay4', this)" />
+       <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486824/Comp_1_00001_vqqyaq.png" data-content="content4" onclick="showContent('overlay4', this)" />
+        <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486831/butterfly_flw68l.png" data-content="content5" onclick="showContent('overlay4', this)" />
+         <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486803/gir-img_bwsdtg.png" data-content="content6" onclick="showContent('overlay4', this)" />
+          <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486823/Comp_1_00037_xhyt0f.png" data-content="content7" onclick="showContent('overlay4', this)" />
+           <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486794/sprial-img_yi5zik.png" data-content="content8" onclick="showContent('overlay4', this)" />
+    </div>
+
+    <div class="content-area" id="overlay4-content">
+      <div id="overlay4-content1" class="content-block show">
+        Abstract Green
+       <video id="Abstract-green-web" style="width: 100%; height: 100%; overflow: hidden; border-radius: 20px;" controls loop>
+        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486838/Abstract-green_nnqi5i.mp4" type="video/mp4">
+       </video>
+
+      </div>
+      <div id="overlay4-content2" class="content-block">
+       GRADIENT
+       
+       <video id="gradient-web" style="width: 100%; height: 100%; overflow: hidden; border-radius: 20px;" controls loop>
+        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486807/gradient_whoj9f.mp4" type="video/mp4">
+       </video>
+      
+      </div>
+      <div id="overlay4-content3" class="content-block">
+        CHILDREN
+          
+       <video id="child-web" style="width: 100%; height: 100%; overflow: hidden; border-radius: 20px;" controls loop>
+        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486828/child_ktghiv.mp4" type="video/mp4">
+       </video>
+      
+      </div>
+      <div id="overlay4-content4" class="content-block">
+        STICKER
+          
+       <video id="stricker-web" style="width: 100%; height: 100%; overflow: hidden; border-radius: 20px;" controls loop>
+        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486794/sticker_wbl7lk.mp4" type="video/mp4">
+       </video>
+      
+      </div>
+      <div id="overlay4-content5" class="content-block">
+        BUTTERFLY
+          
+       <video id="butterfly-web" style="width: 100%; height: 100%; overflow: hidden; border-radius: 20px;" controls loop>
+        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486834/butterfly_tq11gk.mp4" type="video/mp4">
+       </video>
+      
+      </div>
+      <div id="overlay4-content6" class="content-block">
+       E-com (GIR)
+         
+       <video id="e-com-web" style="width: 100%; height: 100%; overflow: hidden; border-radius: 20px;" controls loop>
+        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486794/slash_adirld.mp4" type="video/mp4">
+       </video>
+      
+      </div>
+      <div id="overlay4-content7" class="content-block">
+        EYE
+          
+       <video id="eye-can-web" style="width: 100%; height: 100%; overflow: hidden; border-radius: 20px;" controls loop>
+        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486807/eye-can-web_i2sjpe.mp4" type="video/mp4">
+       </video>
+      
+      </div>
+       <div id="overlay4-content8" class="content-block">
+       SHAPE
+         
+       <video id="sprial-web" style="width: 100%; height: 100%; overflow: hidden; border-radius: 20px;" controls loop>
+        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486796/sprial_yhqbwg.mp4" type="video/mp4">
+       </video>
+      
+      </div>
+    </div>
+  </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div id="overlay5" class="overlay">
+     <div class="art">
+      <div class="art-item">
+        <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486790/untitled_znnxdh.png"/>
+      </div>
+       <div class="art-item">
+        <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486828/caronflower_gmecfx.png"/>
+      </div>
+        <div class="art-item">
+        <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486787/zooomed_idl7lk.png"/>
+      </div>
+       <div class="art-item">
+        <video autoplay loop>
+          <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486798/satrun-mach_n65e8m.mp4"/>
+        </video>
+      </div>
+       <div class="art-item">
+        <video autoplay loop>
+          <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486819/Comp_1_clkqr2.mp4"/>
+        </video>
+      </div>
+      </div>
+      
+     
+    </div>
+
+
+
+
+
+    <div id="overlay8" class="overlay">
+     <div class="split-container">
+    <div class="image-slider">
+      <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486798/packing-img_dra3l7.png" data-content="content1" onclick="showContent('overlay8',this)" />
+      <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486841/0009_wtlgsz.png" data-content="content2" onclick="showContent('overlay8',this)" />
+      <img src="https://res.cloudinary.com/disf7euj5/image/upload/v1756486838/0040_vffqwd.png" data-content="content3" onclick="showContent('overlay8',this)" />
+    </div>
+
+    <div class="content-area" id="overlay8-content">
+      <div id="overlay8-content1" class="content-block show">
+      packing
+       <video id="packing" style="width: 100%; height: 100%; overflow: hidden; border-radius: 20px;" controls loop>
+        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486798/packing_g1bebx.mp4" type="video/mp4">
+       </video>
+      </div>
+      <div id="overlay8-content2" class="content-block">
+       shoe
+       <video id="packing" style="width: 100%; height: 100%; overflow: hidden; border-radius: 20px;" controls loop>
+        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486799/shoe-cover_fwxmyx.mp4" type="video/mp4">
+       </video>
+      </div>
+      <div id="overlay8-content3" class="content-block">
+       watch
+          <video id="watch" style="width: 100%; height: 100%; overflow: hidden; border-radius: 20px;" controls loop>
+        <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486789/watches_dahspv.mp4" type="video/mp4">
+       </video>
+      </div>
+    </div>
+  </div>
+    </div>
+
+
+
+
+    
+    <div id="overlay9" class="overlay">
+     <div style=" width:100%; height:100%; ">
+      <div style="display:flex; left:15%; justify-content: center; align-items: center; padding: 30px; color: white; ">
+      <div style="width: 33.3%; height: auto; box-sizing: border-box; margin: 2%; padding: 3%; overflow: hidden; border-radius: 20px; background-color: #000000;">
+        <img src="1089988-62289e3108483.jpg" style="width: 17%; height: auto;">
+        <h1 style="font-size: .5em;">Web Development</h1>
+        <p style="font-size: .4em;">nice work. looking forward to work again</p>
+        <p style="font-size: .4em; opacity: 50%;">Goodeed, 5 years ago</p>
+      </div>
+       <div style="width: 33.3%; height: auto; box-sizing: border-box; margin: 2%; padding: 3%; overflow: hidden; border-radius: 20px; background-color: #000000;">
+        <img src="https://www.freelancer.com/ppic/161199406/logo/10167609/profile_logo_10167609.jpg?image-optimizer=force&format=webply&width=120" style="width: 17%; height: auto;">
+        <h1 style="font-size: .5em;">I need a web designer for React website</h1>
+        <p style="font-size: .4em;">Its great to hire Dhruva for our project, he done it within budget and time</p>
+        <p style="font-size: .4em; opacity: 50%;">Vardan S, 5 years ago</p>
+      </div>
+       <div style="width: 33.3%; height: auto; box-sizing: border-box; margin: 2%; padding: 3%; overflow: hidden; border-radius: 20px; background-color: #000000;">
+        <img style="width: 17%; height: auto;" src="https://www.freelancer.com/ppic/109716233/logo/20764224/profile_logo_20764224.jpg?image-optimizer=force&format=webply&width=120">
+        <h1 style="font-size: .5em;">Need flyer and website </h1>
+        <p style="font-size: .4em;">Delivered designs as expected and ontime. Good job</p>
+        <p style="font-size: .4em; opacity: 50%;">Rani L, 5 years ago</p>
+      </div>
+       
+     </div>
+     </div>
+     
+    </div>
+
+
+
+
+
+
+  <div id="shortinOverlay" class="overlay">
+  <div style="display: flex; justify-content: center; align-items: center;width: 100%; height: auto;">
+    <video loop autoplay style="width: 100%; height: auto;border-radius: 30px; overflow: hidden; margin: 5%;">
+      <source src="https://res.cloudinary.com/disf7euj5/video/upload/v1756486810/inshort_ietgsr.mp4"/>
+    </video>
+  </div>
+
+  
+ 
+</div>
+
+
+
+</div>
+
+
+  </div>
+
+<script>
+  const gradientVideo = document.getElementById('gradientVideo');
+  const gradientFPS = 240; // Set your video's fps here
+
+  // Magnetic gradient zones config
+  const gradientZones = [
+    { startFrame: 232, endFrame: 282, snapFrame: 257 },
+    { startFrame: 339, endFrame: 395, snapFrame: 395 },
+  ];
+
+  // State variables for snapping
+  let isGradientSnapping = false;
+  let gradientSnapTargetTime = 0;
+
+  // Speed of snap animation in seconds per second (adjust for faster/slower)
+  const gradientSnapSpeed = 1.5; // e.g. 1.5 seconds of video per real second
+
+  // Get current scroll frame
+  function getGradientScrollFrame() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = scrollTop / docHeight;
+    return Math.floor(scrollPercent * gradientVideo.duration * gradientFPS);
+  }
+
+  // Find zone for current frame
+  function findGradientZone(frame) {
+    return gradientZones.find(
+      zone => frame >= zone.startFrame && frame <= zone.endFrame
+    );
+  }
+
+  // Animate snap with smooth velocity toward snap target time
+  function animateGradientSnap(timestamp) {
+    if (!isGradientSnapping) return;
+
+    const currentTime = gradientVideo.currentTime;
+    const diff = gradientSnapTargetTime - currentTime;
+
+    // Stop snapping if close enough (within 0.01 sec)
+    if (Math.abs(diff) < 0.01) {
+      gradientVideo.currentTime = gradientSnapTargetTime;
+      isGradientSnapping = false;
+      return;
+    }
+
+    // Calculate direction (-1 or +1)
+    const direction = diff > 0 ? 1 : -1;
+
+    // Time delta for smooth animation
+    // Use requestAnimationFrame timestamp or fallback to fixed 16ms frame
+    const now = performance.now();
+    if (!animateGradientSnap.lastTime) animateGradientSnap.lastTime = now;
+    const deltaTime = (now - animateGradientSnap.lastTime) / 1000; // in seconds
+    animateGradientSnap.lastTime = now;
+
+    // Calculate next time position based on snap speed and elapsed time
+    let newTime = currentTime + direction * gradientSnapSpeed * deltaTime;
+
+    // Clamp newTime to not overshoot target
+    if ((direction > 0 && newTime > gradientSnapTargetTime) ||
+        (direction < 0 && newTime < gradientSnapTargetTime)) {
+      newTime = gradientSnapTargetTime;
+    }
+
+    gradientVideo.currentTime = newTime;
+
+    requestAnimationFrame(animateGradientSnap);
+  }
+
+  // Start snap animation to snapFrame
+  function startGradientSnap(targetFrame) {
+    gradientSnapTargetTime = targetFrame / gradientFPS;
+    if (!isGradientSnapping) {
+      isGradientSnapping = true;
+      animateGradientSnap.lastTime = performance.now();
+      requestAnimationFrame(animateGradientSnap);
+    }
+  }
+
+  // Scroll handler
+  function onGradientScroll() {
+    if (gradientVideo.readyState < 2) return; // Wait for metadata
+    if (isGradientSnapping) {
+      // While snapping, check if scroll moved out of zone to cancel snapping
+      const currentFrame = getGradientScrollFrame();
+      const zone = findGradientZone(currentFrame);
+      if (!zone) {
+        // Cancel snapping if user scrolled away
+        isGradientSnapping = false;
+      }
+      return;
+    }
+
+    const currentFrame = getGradientScrollFrame();
+    const zone = findGradientZone(currentFrame);
+
+    if (zone) {
+      startGradientSnap(zone.snapFrame);
+    } else {
+      gradientVideo.currentTime = currentFrame / gradientFPS;
+    }
+  }
+
+  gradientVideo.pause();
+
+  gradientVideo.addEventListener('loadedmetadata', () => {
+    onGradientScroll();
+  });
+
+  window.addEventListener('scroll', onGradientScroll);
+</script>
+  <script>
+//bg////
+
+//document.addEventListener("DOMContentLoaded", function(){
+ // const video = document.getElementById("bgvideo");
+  //video.playbackRate =.07;
+//});
+
+
+
+
+
+
+
+
+
+
+
+const button = document.getElementById('shortinBtn');
+const overlays = document.querySelectorAll('.overlay');
+
+const observer = new MutationObserver(() => {
+  const anyActive = Array.from(overlays).some(overlay => overlay.classList.contains('active'));
+  button.style.display = anyActive ? 'none' : 'block';
+});
+
+// Observe class changes on each overlay
+overlays.forEach(overlay => {
+  observer.observe(overlay, { attributes: true, attributeFilter: ['class'] });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const flowerObj = document.getElementById('flower');
+    const flowerContainer = document.getElementById('flower-container');
+    const flowerEl = document.getElementById('flower');
+
+    flowerObj.addEventListener("load", function () {
+      const svgDoc = flowerObj.contentDocument;
+      const petals = ['petal3', 'petal4', 'petal5', 'petal8', 'petal9'];
+
+      petals.forEach(id => {
+        const el = svgDoc.getElementById(id);
+        if (el) {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', () => showOverlay(`overlay${id.slice(-1)}`));
+        }
+      });
+
+      const seed = svgDoc.getElementById('seed_group');
+      if (seed) {
+        seed.style.cursor = 'pointer';
+        seed.addEventListener('click', goHome);
+      }
+    });
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    function goHome() {
+      document.querySelectorAll('.overlay').forEach(el => el.classList.remove('active'));
+      flowerContainer.style.width = '100%';
+      flowerEl.style.width = '1000px';
+      flowerEl.style.height = '1000px';
+    }
+
+const shortinBtn = document.getElementById('shortinBtn');
+const shortinOverlay = document.getElementById('shortinOverlay');
+
+// Handle short-in button click
+shortinBtn.addEventListener('click', () => {
+  document.querySelectorAll('.overlay').forEach(el => el.classList.remove('active'));
+  shortinOverlay.classList.add('active');
+
+  // Shrink flower
+  flowerContainer.style.width = '22%';
+  flowerEl.style.width = '570px';
+  flowerEl.style.height = '570px';
+
+  // Hide the button
+  shortinBtn.style.display = 'none';
+});
+
+// Override goHome() to bring back the shortinBtn
+function goHome() {
+  document.querySelectorAll('.overlay').forEach(el => el.classList.remove('active'));
+  flowerContainer.style.width = '100%';
+  flowerEl.style.width = '1000px';
+  flowerEl.style.height = '1000px';
+
+  // Restore the short-in button
+  shortinBtn.style.display = 'inline-block';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function showContent(overlayId, imgElement) {
+  const contentKey = imgElement.getAttribute("data-content");
+  const container = document.getElementById(`${overlayId}-content`);
+  const allBlocks = container.querySelectorAll('.content-block');
+
+  allBlocks.forEach(block => block.classList.remove("show"));
+
+  const selectedBlock = document.getElementById(`${overlayId}-${contentKey}`);
+  if (selectedBlock) {
+    selectedBlock.classList.add("show");
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Show overlay and default content (content1)
+function showOverlay(id) {
+  document.querySelectorAll('.overlay').forEach(el => el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  flowerContainer.style.width = '22%';
+  flowerEl.style.width = '570px';
+  flowerEl.style.height = '570px';
+
+  // Default to first content for specific overlays
+  const defaultMap = {
+    overlay3: 'content1',
+    overlay4: 'content1',
+    overlay8: 'content1'
+  };
+  if (defaultMap[id]) {
+    showContent(id, defaultMap[id]);
+  }
+}
+
+  </script>
+<script>
+document.getElementById("flower").addEventListener("load", function () {
+  const svgDoc = this.contentDocument;
+  const petals = ["petal3", "petal4", "petal5", "petal8", "petal9"];
+  const seed = svgDoc.getElementById("seed_group");
+
+  let activePetal = null;
+
+  petals.forEach(id => {
+    const petal = svgDoc.getElementById(id);
+
+    // Set transform origin for smooth center scaling
+    petal.style.transformOrigin = "center center";
+    petal.style.transition = "transform 0.3s ease, opacity 0.3s ease, fill 0.3s ease";
+
+    // Hover effect
+    petal.addEventListener("mouseenter", () => {
+      if (activePetal !== petal) {
+        petal.style.transform = "scale(1.2)";
+        petal.style.opacity = ".1";
+      }
+    });
+    petal.addEventListener("mouseleave", () => {
+      if (activePetal !== petal) {
+        petal.style.transform = "scale(1)";
+         petal.style.opacity = ".55";
+      }
+    });
+
+    // Click effect
+    petal.addEventListener("click", () => {
+      // Remove previous active petal
+      if (activePetal) {
+        activePetal.style.transform = "scale(1)";
+        activePetal.style.opacity = ".55";
+        activePetal.style.fill = ""; // Reset color
+      }
+
+      activePetal = petal;
+      petal.style.transform = "scale(1.06)";
+      petal.style.opacity = "0.1";
+      petal.style.fill = "black";
+
+      // You should also show corresponding overlay here
+    });
+  });
+
+  // Hover effect only for seed, no click
+  seed.style.transformOrigin = "center center";
+  seed.style.transition = "transform 0.3s ease";
+  seed.addEventListener("mouseenter", () => {
+    seed.style.transform = "scale(1.2)";
+    seed.style.opacity=".2";
+  });
+  seed.addEventListener("mouseleave", () => {
+    seed.style.transform = "scale(1)";
+    seed.style.opacity="1";
+  });
+
+  // Reset petals when seed (home button) is clicked
+  seed.addEventListener("click", () => {
+    if (activePetal) {
+      activePetal.style.transform = "scale(1)";
+      activePetal.style.opacity = ".55";
+      activePetal.style.fill = "";
+      activePetal = null;
+    }
+    // Hide overlays too if needed
+  });
+});
+
+
+
+
+const videodifferentearshumaninterface = document.getElementById('different-ears');
+const overlay3_content4_humaninterface = document.getElementById('overlay3-content4');
+
+const observer_for_overlay3_content4_video=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      videodifferentearshumaninterface.play()
+
+    }
+    else{
+      videodifferentearshumaninterface.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+ observer_for_overlay3_content4_video.observe(overlay3_content4_humaninterface);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+const volume_brightness = document.getElementById('volume-brightness');
+const volume_brightness_overlay3 = document.getElementById('overlay3-content5');
+
+const observer_for_volume_brightness_overlay3=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      volume_brightness.play()
+
+    }
+    else{
+      volume_brightness.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_volume_brightness_overlay3.observe(volume_brightness_overlay3);
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const on_type_results_humaninterface = document.getElementById('on-type-results');
+const overlay3_content6_video = document.getElementById('overlay3-content6');
+
+const observer_for_overlay3_content6_video=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      on_type_results_humaninterface.play()
+
+    }
+    else{
+      on_type_results_humaninterface.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_overlay3_content6_video.observe(overlay3_content6_video);
+
+
+
+
+
+const youtube_simple_humaninterface = document.getElementById('youtube-simple');
+const overlay3_content1_video = document.getElementById('overlay3-content1');
+
+const observer_for_overlay3_content1_video=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      youtube_simple_humaninterface.play()
+
+    }
+    else{
+      youtube_simple_humaninterface.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_overlay3_content1_video.observe(overlay3_content1_video);
+
+
+
+
+
+
+
+//overlay4
+
+const Abstract_green_web = document.getElementById('Abstract-green-web');
+const Abstract_green_web_overlay4 = document.getElementById('overlay4-content1');
+
+const observer_for_Abstract_green_web_overlay4=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      Abstract_green_web.play()
+
+    }
+    else{
+      Abstract_green_web.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_Abstract_green_web_overlay4.observe(Abstract_green_web_overlay4);
+
+
+
+
+
+
+
+
+
+
+const gradient_web = document.getElementById('gradient-web');
+const gradient_web_overlay4 = document.getElementById('overlay4-content2');
+
+const observer_for_gradient_web_overlay4=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      gradient_web.play()
+
+    }
+    else{
+      gradient_web.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_gradient_web_overlay4.observe(gradient_web_overlay4);
+
+
+
+
+const child_web= document.getElementById('child-web');
+const child_web_overlay4 = document.getElementById('overlay4-content3');
+
+const observer_for_child_web_overlay4=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      child_web.play()
+
+    }
+    else{
+      child_web.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_child_web_overlay4.observe(child_web_overlay4);
+
+
+
+
+
+
+
+const stricker_web= document.getElementById('stricker-web');
+const stricker_web_overlay4 = document.getElementById('overlay4-content4');
+
+const observer_for_stricker_web_overlay4=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      stricker_web.play()
+
+    }
+    else{
+      stricker_web.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_stricker_web_overlay4.observe(stricker_web_overlay4);
+
+
+
+const butterfly_web= document.getElementById('butterfly-web');
+const butterfly_web_overlay4 = document.getElementById('overlay4-content5');
+
+const observer_for_butterfly_web_overlay4=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      butterfly_web.play()
+
+    }
+    else{
+      butterfly_web.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_butterfly_web_overlay4.observe(butterfly_web_overlay4);
+
+
+
+
+
+const e_com_web= document.getElementById('e-com-web');
+const e_com_web_overlay4 = document.getElementById('overlay4-content6');
+
+const observer_for_e_com_web_overlay4=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      e_com_web.play()
+
+    }
+    else{
+      e_com_web.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_e_com_web_overlay4.observe(e_com_web_overlay4);
+
+
+
+
+
+
+
+const eye_can_web= document.getElementById('eye-can-web');
+const eye_can_web_overlay4 = document.getElementById('overlay4-content7');
+
+const observer_for_eye_can_web_overlay4=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      eye_can_web.play()
+
+    }
+    else{
+      eye_can_web.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_eye_can_web_overlay4.observe(eye_can_web_overlay4);
+
+
+
+
+
+
+const sprial_web= document.getElementById('sprial-web');
+const sprial_web_overlay4 = document.getElementById('overlay4-content8');
+
+const observer_for_sprial_web_overlay4=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      sprial_web.play()
+
+    }
+    else{
+      sprial_web.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_sprial_web_overlay4.observe(sprial_web_overlay4);
+
+
+
+
+
+
+
+const contour_expand= document.getElementById('contour_expand');
+const contour_expand_overlay3= document.getElementById('overlay3-content8');
+
+const observer_for_contour_expand_overlay3=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      contour_expand.play()
+
+    }
+    else{
+      contour_expand.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_contour_expand_overlay3.observe(contour_expand_overlay3);
+
+
+
+
+
+
+
+
+
+
+
+
+const packing= document.getElementById('packing');
+const packing_overlay8= document.getElementById('overlay8-content1');
+
+const observer_for_packing_overlay8=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      packing.play()
+
+    }
+    else{
+      packing.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_packing_overlay8.observe(packing_overlay8);
+
+
+
+
+
+const watch= document.getElementById('watch');
+const watch_overlay8= document.getElementById('overlay8-content3');
+
+const observer_for_watch_overlay8=new IntersectionObserver((entries)=>{
+  entries.forEach(entry =>{
+    if (entry.isIntersecting){
+      watch.play()
+
+    }
+    else{
+      watch.pause();
+    }
+  });
+},{
+  threshold:0.1
+});
+observer_for_watch_overlay8.observe(watch_overlay8);
+
+
+
+
+
+
+
+const video_mainVideo = document.getElementById("bgvideo");
+const all_overlayDivs = document.querySelectorAll(".overlay");
+
+let reqId_videoAnim = null;
+let currentFrame_video = 0;
+let state_videoPlayback = "inactive"; // "inactive", "transitioning", "active"
+const frameRate_video = 24;
+
+function setFrame(frame) {
+  video_mainVideo.currentTime = frame / frameRate_video;
+}
+
+function loopFrames(start, end) {
+  cancelAnimationFrame(reqId_videoAnim);
+  currentFrame_video = start;
+
+  function animate() {
+    setFrame(currentFrame_video);
+    currentFrame_video++;
+    if (currentFrame_video > end) currentFrame_video = start;
+    reqId_videoAnim = requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+function playOnce(start, end, done) {
+  cancelAnimationFrame(reqId_videoAnim);
+  currentFrame_video = start;
+
+  function play() {
+    setFrame(currentFrame_video);
+    currentFrame_video++;
+    if (currentFrame_video <= end) {
+      reqId_videoAnim = requestAnimationFrame(play);
+    } else {
+      done();
+    }
+  }
+
+  play();
+}
+
+function isAnyOverlayActive() {
+  return Array.from(all_overlayDivs).some(div => div.classList.contains("active"));
+}
+
+function updatePlaybackFromOverlays() {
+  const isAnyActive = isAnyOverlayActive();
+
+  if (isAnyActive && state_videoPlayback !== "active") {
+    state_videoPlayback = "transitioning";
+    playOnce(20, 40, () => {
+      state_videoPlayback = "active";
+      loopFrames(40, 41);
+    });
+  }
+
+  if (!isAnyActive && state_videoPlayback !== "inactive") {
+    state_videoPlayback = "inactive";
+    loopFrames(0, 1);
+  }
+}
+
+// Set up observers for each overlay div
+all_overlayDivs.forEach(div => {
+  const observerbg = new MutationObserver(() => {
+    updatePlaybackFromOverlays();
+  });
+
+  observerbg.observe(div, {
+    attributes: true,
+    attributeFilter: ["class"]
+  });
+});
+
+// Start default loop
+loopFrames(0, 1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
+
+  <script>
+    const animation = lottie.loadAnimation({
+      container: document.getElementById("on-tab-settings"),
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: "on-tab-settings.json" // ← replace with your actual JSON file
+    });
+
+    animation.addEventListener("DOMLoaded", () => {
+      const svg = document.querySelector("#on-tab-settings svg");
+
+      const groups = svg.querySelectorAll("g");
+
+      // Optional: Add outline for testing
+      groups.forEach((g, i) => {
+        if (i === 52)  { // 9th <g> is at index 8 (because counting starts at 0)
+        g.setAttribute("data-index", i);
+         
+          g.style.cursor = "pointer";
+
+          g.addEventListener("click", () => {
+            animation.playSegments([23, 45], true);
+          });
+
+
+          
+        }
+      });
+
+       groups.forEach((g, i) => {
+        if (i === 50)  { // 9th <g> is at index 8 (because counting starts at 0)
+        g.setAttribute("data-index", i);
+      g.style.cursor = "pointer";
+
+          g.addEventListener("click", () => {
+            animation.playSegments([45, 22], true);
+          });
+
+
+          
+        }
+      });
+
+
+
+          groups.forEach((g, i) => {
+        if (i === 54)  { // 9th <g> is at index 8 (because counting starts at 0)
+        g.setAttribute("data-index", i);
+       
+g.style.cursor = "pointer";
+          g.addEventListener("click", () => {
+            animation.playSegments([21, 0], true);
+          });
+
+
+          
+        }
+      });
+
+
+
+
+
+      groups.forEach((g, i) => {
+        g.setAttribute("data-index", i);
+        if (i === 56)  { // 9th <g> is at index 8 (because counting starts at 0)
+      g.style.cursor = "pointer";
+
+          g.addEventListener("click", () => {
+            animation.playSegments([0, 21], true);
+          });
+
+
+          
+        }
+      });
+    });
+  </script>
+
+
+  <script>
+const video = document.getElementById("bgvideo");
+const fps = 60;
+const frameToTime = frame => frame / fps;
+
+let loopInterval = null;
+let isLooping = false;
+let reverseInterval = null;
+let isFirstPetalClick = true;
+let currentFrame = 0;
+
+// Function to play from frame 30 to 80 once
+function play30to80(callback) {
+  video.currentTime = frameToTime(30);
+  video.play();
+
+  const stopTime = frameToTime(80);
+  const checkEnd = () => {
+    if (video.currentTime >= stopTime) {
+      video.pause();
+      video.removeEventListener('timeupdate', checkEnd);
+      if (callback) callback();
+    }
+  };
+  video.addEventListener('timeupdate', checkEnd);
+}
+
+// Function to loop from 80 to 100
+function loop80to100() {
+  if (loopInterval) clearInterval(loopInterval);
+  isLooping = true;
+  video.currentTime = frameToTime(80);
+  video.play();
+
+  loopInterval = setInterval(() => {
+    if (video.currentTime >= frameToTime(100)) {
+      video.currentTime = frameToTime(80);
+    }
+  }, 100);
+}
+
+// Function to reverse play from current frame to 30
+function reverseTo30() {
+  if (!isLooping) return;
+  if (loopInterval) clearInterval(loopInterval);
+  isLooping = false;
+  video.pause();
+
+  const reverseStep = 1 / fps;
+  reverseInterval = setInterval(() => {
+    video.currentTime -= reverseStep;
+    if (video.currentTime <= frameToTime(30)) {
+      clearInterval(reverseInterval);
+      video.pause();
+    }
+  }, 1000 / fps);
+}
+
+// Petal button click handler
+function onPetalClick() {
+  if (isFirstPetalClick) {
+    isFirstPetalClick = false;
+    play30to80(loop80to100);
+  } else {
+    loop80to100();
+  }
+}
+
+// Seed button click handler
+document.getElementById('seed_group').addEventListener('click', () => {
+  reverseTo30();
+});
+
+// Add listeners to petal buttons
+['petal3', 'petal4', 'petal5', 'petal8', 'petal9'].forEach(id => {
+  document.getElementById(id).addEventListener('click', onPetalClick);
+});
+</script>
+
+
+
+
+  <script>
+    const animation_intiative_toopen = lottie.loadAnimation({
+      container: document.getElementById("intiative-toopen"),
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: "https://res.cloudinary.com/disf7euj5/raw/upload/v1756546846/intutive_fnqzam.json" // ← replace with your actual JSON file
+    });
+
+    animation_intiative_toopen.addEventListener("DOMLoaded", () => {
+      const svg = document.querySelector("#intiative-toopen svg");
+
+      const groups = svg.querySelectorAll("g");
+
+      // Optional: Add outline for testing
+      groups.forEach((g, i) => {
+        if (i === 40)  { // 9th <g> is at index 8 (because counting starts at 0)
+        g.setAttribute("data-index", i);
+        
+          g.style.cursor = "pointer";
+
+          g.addEventListener("click", () => {
+            animation_intiative_toopen.playSegments([3, 4], true);
+          });
+
+
+          
+        }
+      });
+
+       groups.forEach((g, i) => {
+        if (i === 38)  { 
+           g.setAttribute("data-index", i);
+           g.style.cursor = "pointer";
+
+          let clickTimeout;
+
+          g.addEventListener("click", () => {
+            clickTimeout=setTimeout(() =>{
+               animation_intiative_toopen.goToAndStop(1, true);
+
+            },1);
+           
+          });
+
+           g.addEventListener("dblclick", ()=>{
+            clearTimeout(clickTimeout);
+              animation_intiative_toopen.goToAndStop(0,true);
+            });
+
+
+          
+        }
+      });
+
+
+
+          groups.forEach((g, i) => {
+        if (i === 36)  { // 9th <g> is at index 8 (because counting starts at 0)
+        g.setAttribute("data-index", i);
+       
+g.style.cursor = "pointer";
+          g.addEventListener("click", () => {
+            animation_intiative_toopen.playSegments([7, 8], true);
+          });
+
+
+          
+        }
+      });
+
+
+
+
+
+      groups.forEach((g, i) => {
+        g.setAttribute("data-index", i);
+        if (i === 34)  { // 9th <g> is at index 8 (because counting starts at 0)
+      g.style.cursor = "pointer";
+
+          g.addEventListener("click", () => {
+            animation_intiative_toopen.playSegments([9, 10], true);
+          });
+
+
+          
+        }
+      });
+
+
+
+      groups.forEach((g, i) => {
+        if (i === 42)  { // 9th <g> is at index 8 (because counting starts at 0)
+        g.setAttribute("data-index", i);
+      g.style.cursor = "pointer";
+
+          g.addEventListener("click", () => {
+            animation_intiative_toopen.playSegments([0, 1], true);
+          });
+
+
+          
+        }
+      });
+
+
+      
+      groups.forEach((g, i) => {
+        if (i === 44)  { // 9th <g> is at index 8 (because counting starts at 0)
+        g.setAttribute("data-index", i);
+      g.style.cursor = "pointer";
+
+          g.addEventListener("click", () => {
+            animation_intiative_toopen.playSegments([15, 16], true);
+          });
+
+
+          
+        }
+      });
+
+
+
+        
+      groups.forEach((g, i) => {
+        if (i === 32)  { // 9th <g> is at index 8 (because counting starts at 0)
+        g.setAttribute("data-index", i);
+      g.style.cursor = "pointer";
+
+          g.addEventListener("click", () => {
+            animation_intiative_toopen.playSegments([21, 22], true);
+          });
+
+
+          
+        }
+      });
+
+
+        
+      groups.forEach((g, i) => {
+        if (i === 46)  { // 9th <g> is at index 8 (because counting starts at 0)
+        g.setAttribute("data-index", i);
+      g.style.cursor = "pointer";
+
+          g.addEventListener("click", () => {
+            animation_intiative_toopen.playSegments([0, 1], true);
+          });
+
+
+          
+        }
+      });
+
+
+
+
+    });
+  </script>
+
+
+
+ <script>
+    const animation_battery_to_time = lottie.loadAnimation({
+      container: document.getElementById("battery-to-time"),
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: "https://res.cloudinary.com/disf7euj5/raw/upload/v1756486835/battery-to-time_he5z0t.json" 
+    });
+
+    animation_battery_to_time.addEventListener("DOMLoaded", () => {
+      const svg = document.querySelector("#battery-to-time svg");
+
+      const groups = svg.querySelectorAll("g");
+      let toggled=true;
+
+      
+      groups.forEach((g, i) => {
+        if (i === 17)  { 
+        g.setAttribute("data-index", i);
+        
+          
+          g.style.cursor = "pointer";
+
+          g.addEventListener("click", () => {
+            if (!toggled){
+              animation_battery_to_time.playSegments([0, 14], true);
+
+            }else{
+              animation_battery_to_time.playSegments([14, 0], true);
+            }
+            toggled=!toggled;
+          });
+        }
+      });
+
+
+
+
+    
+    });
+  </script>
+<script>
+  const container = document.getElementById('future-indoor');
+
+  const animation_future_indoor = lottie.loadAnimation({
+    container,
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    path: 'future-indoor.json' // Replace with your JSON file path
+  });
+
+  // After loading:
+  animation_future_indoor.addEventListener('DOMLoaded', () => {
+    const totalFrames = animation_future_indoor.getDuration(true);
+    let scrollPos = 0;
+    let lastScrollTop = 0;
+    let targetFrame = 0;
+    let currentFrame = 0;
+
+    // Configurable slow zones
+    const anchorFrames = [64]; // you can add more
+    const slowdownRange = 14; // e.g. from frame 58 to 70 around 64
+
+    // Mapping scroll to targetFrame
+    const updateTargetFrame = () => {
+      const scrollTop = window.scrollY;
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = scrollTop / maxScroll;
+
+      let rawFrame = scrollPercent * totalFrames;
+
+      // Hysteresis around important anchor frames
+      for (let anchor of anchorFrames) {
+        const distance = Math.abs(rawFrame - anchor);
+        if (distance < slowdownRange) {
+          const influence = 1 - distance / slowdownRange; // 0 to 1
+          rawFrame = rawFrame * (1 - influence) + anchor * influence;
+        }
+      }
+
+      targetFrame = Math.max(0, Math.min(totalFrames - 1, rawFrame));
+    };
+
+    // Smooth animation_future_indoor using requestAnimationFrame
+    const animate = () => {
+      requestAnimationFrame(animate);
+
+      updateTargetFrame();
+
+      // interpolate currentFrame to targetFrame
+      currentFrame += (targetFrame - currentFrame) * 0.15; // smoothing factor
+
+      animation_future_indoor.goToAndStop(currentFrame, true);
+    };
+
+    animate();
+  });
+</script>
+
+
+
+
+
+  <script>
+    document.querySelectorAll('.codeblock').forEach(section => {
+      const btn = section.querySelector('.copybtn');
+      const code = section.querySelector('pre code');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(code.textContent);
+          btn.textContent = 'Copied!';
+          setTimeout(()=> btn.textContent = 'Copy', 1200);
+        } catch(e){
+          console.error(e);
+          btn.textContent = 'Failed';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
