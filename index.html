@@ -9,6 +9,21 @@
   
   <title>Portfolio-Dhruva Pratap Verma</title>
   <style>
+
+  @media only screen and (max-width: 768px) and (orientation: portrait) {
+    body {
+      transform: rotate(90deg);
+      transform-origin: left top;
+      width: 100vh;
+      height: 100vw;
+      overflow-x: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+    
     body, html {
       margin: 0;
       padding: 0;
@@ -2563,5 +2578,20 @@ g.style.cursor = "pointer";
       });
     });
   </script>
+
+
+
+
+
+  <script>
+  if (window.innerWidth <= 768) { // only phones
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock("landscape").catch(err => {
+        console.log("Orientation lock failed:", err);
+      });
+    }
+  }
+</script>
 </body>
 </html>
+
